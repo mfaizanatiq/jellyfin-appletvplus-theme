@@ -1,0 +1,406 @@
+/* =============================================================
+   _detail.css — Apple TV+ Item Detail Page
+   Jellyfin Apple TV+ Theme by mfaizanatiq
+   ============================================================= */
+
+/* ── Full-bleed backdrop hero ── */
+.itemDetailPage {
+  background: #000 !important;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Cinematic backdrop that fills the screen */
+.itemBackdrop,
+.backdropImage,
+.itemDetailPage .backdropContainer {
+  position: fixed !important;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  background-size: cover !important;
+  background-position: center top !important;
+  z-index: 0;
+  filter: brightness(0.45) saturate(1.1);
+}
+
+/* Deep gradient overlay — bottom-heavy like Apple TV+ */
+.itemDetailPage::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(to bottom,
+      rgba(0,0,0,0.15) 0%,
+      rgba(0,0,0,0.0) 20%,
+      rgba(0,0,0,0.2) 40%,
+      rgba(0,0,0,0.85) 65%,
+      rgba(0,0,0,0.97) 80%,
+      #000 100%
+    );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Content sits above gradient */
+.itemDetailPage .padded-left,
+.itemDetailPage .padded-right,
+.itemDetailPage .padded-top,
+.itemDetailPage .itemDetailPageContent,
+.itemDetailPage .detailPageContent,
+.detailPagePrimaryContainer,
+.itemDetailPagePrimaryContent {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Title Block ── */
+.itemName,
+h1.itemName,
+.itemDetailPage h1 {
+  font-family: -apple-system, 'SF Pro Display', BlinkMacSystemFont, 'Helvetica Neue', sans-serif !important;
+  font-size: clamp(2.2rem, 5vw, 4.5rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  color: #fff !important;
+  line-height: 1.05 !important;
+  margin-bottom: 0.3em !important;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+
+/* "New" / "All Episodes Available" badge */
+.itemDetailPage .itemMiscInfo .mediaInfoItem:first-child,
+.itemDetailPage .itemStatus {
+  display: inline-block;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+/* ── Genre / Type Tags row ── */
+.itemDetailPage .itemMiscInfo,
+.detail-clamp-3 .itemMiscInfo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  align-items: center;
+  margin: 0.5em 0 !important;
+  font-size: 0.85rem !important;
+  color: rgba(255,255,255,0.75) !important;
+}
+
+.itemDetailPage .itemMiscInfo .mediaInfoItem {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255,255,255,0.75);
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+/* Dot separator between tags */
+.itemDetailPage .itemMiscInfo .mediaInfoItem + .mediaInfoItem::before {
+  content: '·';
+  margin: 0 0.4em;
+  opacity: 0.5;
+}
+
+/* ── Technical badges (4K, Dolby Vision, Atmos, CC) ── */
+.itemDetailPage .mediaInfoStream,
+.itemDetailPage .mediaSourceIndicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 18px;
+  padding: 0 5px;
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 3px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.8);
+  text-transform: uppercase;
+  margin: 0 2px;
+  vertical-align: middle;
+}
+
+/* ── Overview / Description ── */
+.itemDetailPage .overview,
+.itemDetailPage .itemOverview {
+  font-size: 0.92rem !important;
+  line-height: 1.55 !important;
+  color: rgba(255,255,255,0.82) !important;
+  max-width: 560px !important;
+  margin: 0.75em 0 1.25em !important;
+  font-weight: 400;
+  font-family: -apple-system, 'SF Pro Text', BlinkMacSystemFont, sans-serif !important;
+}
+
+/* ── Action Buttons Row ── */
+.itemDetailPage .detailButtons,
+.itemDetailPage .btnContainer,
+.itemDetailPage .detailPagePrimaryActionButtons {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin: 1.25em 0 !important;
+  flex-wrap: wrap;
+}
+
+/* Primary Play Button — white pill */
+.itemDetailPage .btnPlay,
+.itemDetailPage .button-primary,
+button.btnPlay {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: #fff !important;
+  color: #000 !important;
+  border: none !important;
+  border-radius: 24px !important;
+  padding: 10px 24px !important;
+  font-size: 0.92rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  min-width: 120px;
+  justify-content: center;
+}
+
+.itemDetailPage .btnPlay:hover {
+  background: rgba(255,255,255,0.88) !important;
+  transform: scale(1.03);
+}
+
+/* Secondary icon buttons — frosted glass circles */
+.itemDetailPage .btnResume,
+.itemDetailPage .btnPlayTrailer,
+.itemDetailPage .btnAddToCollection,
+.itemDetailPage .btnMarkPlayed,
+.itemDetailPage .btnInstantMix,
+.itemDetailPage .btnShuffle,
+.itemDetailPage .emby-button:not(.btnPlay):not(.button-primary) {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 50% !important;
+  background: rgba(255,255,255,0.15) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+  color: #fff !important;
+  font-size: 1rem !important;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  padding: 0 !important;
+  min-width: unset !important;
+}
+
+.itemDetailPage .emby-button:not(.btnPlay):hover {
+  background: rgba(255,255,255,0.28) !important;
+  transform: scale(1.08);
+}
+
+/* ── Starring / Cast Row ── */
+.itemDetailPage .peopleContainer,
+.itemDetailPage .cardGrid.peopleContainer {
+  margin-top: 1.5em !important;
+}
+
+.itemDetailPage .castPersonName,
+.itemDetailPage .cardText {
+  font-size: 0.78rem !important;
+  color: rgba(255,255,255,0.85) !important;
+  font-weight: 500;
+}
+
+.itemDetailPage .castPersonRole,
+.itemDetailPage .cardText-secondary {
+  font-size: 0.7rem !important;
+  color: rgba(255,255,255,0.5) !important;
+}
+
+/* Cast photo circles */
+.itemDetailPage .personCard .cardContent,
+.itemDetailPage .peopleContainer .cardImageContainer {
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  border: 2px solid rgba(255,255,255,0.15);
+}
+
+/* ── Section headers on detail page ── */
+.itemDetailPage .sectionTitle,
+.itemDetailPage h2,
+.itemDetailPage .detailSectionHeader {
+  font-family: -apple-system, 'SF Pro Display', BlinkMacSystemFont, sans-serif !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  color: #fff !important;
+  letter-spacing: -0.01em;
+  margin: 2em 0 0.75em !important;
+}
+
+/* ── Season Selector Pills ── */
+.itemDetailPage .seasonTab,
+.itemDetailPage .episodeSortButtons,
+.seasonSelect,
+.itemDetailPage .filterButtonGroup {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 8px !important;
+  margin: 1em 0 !important;
+  flex-wrap: wrap;
+}
+
+.itemDetailPage .seasonTab button,
+.itemDetailPage .episodeSortButtons button,
+.itemDetailPage .filterButtonGroup button,
+.seasonSelectButton {
+  background: rgba(255,255,255,0.1) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(255,255,255,0.15) !important;
+  border-radius: 20px !important;
+  color: rgba(255,255,255,0.75) !important;
+  padding: 6px 18px !important;
+  font-size: 0.82rem !important;
+  font-weight: 500 !important;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.itemDetailPage .seasonTab button.active,
+.itemDetailPage .seasonTab button[data-selected="true"],
+.seasonSelectButton.active {
+  background: rgba(255,255,255,0.9) !important;
+  color: #000 !important;
+  border-color: transparent !important;
+  font-weight: 600 !important;
+}
+
+/* ── Episode List ── */
+.episodesCard,
+.itemDetailPage .listItem,
+.itemDetailPage .cardBox {
+  background: rgba(255,255,255,0.05) !important;
+  border-radius: 12px !important;
+  padding: 12px !important;
+  margin-bottom: 2px !important;
+  transition: background 0.2s;
+  border: 1px solid rgba(255,255,255,0.06) !important;
+}
+
+.episodesCard:hover,
+.itemDetailPage .listItem:hover {
+  background: rgba(255,255,255,0.1) !important;
+}
+
+/* Episode thumbnail */
+.itemDetailPage .cardImageContainer.coveredImage,
+.itemDetailPage .episodeThumbnail {
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+
+/* Episode number + title */
+.itemDetailPage .cardTextBlock .cardText {
+  font-size: 0.88rem !important;
+  font-weight: 600 !important;
+  color: #fff !important;
+}
+
+/* Episode description */
+.itemDetailPage .cardTextBlock .cardText-secondary {
+  font-size: 0.75rem !important;
+  color: rgba(255,255,255,0.6) !important;
+  line-height: 1.4 !important;
+}
+
+/* ── Trailers Row ── */
+.itemDetailPage .trailersSection .card,
+.itemDetailPage .trailerCardContainer {
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
+/* Play overlay on trailer thumbnails */
+.itemDetailPage .trailersSection .cardOverlayContainer {
+  background: rgba(0,0,0,0.3) !important;
+  border-radius: 10px !important;
+}
+
+/* ── More Info / Metadata Block ── */
+.itemDetailPage .itemDetailPageInfoRow,
+.itemDetailPage .detailPage-metadataSection {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  gap: 2em !important;
+  margin: 2em 0 !important;
+  padding: 1.5em !important;
+  background: rgba(255,255,255,0.05) !important;
+  border-radius: 14px !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+}
+
+.itemDetailPage .itemDetailPageInfoRow .itemDetailPageInfoLabel,
+.itemDetailPage .detailPageInfoLabel {
+  font-size: 0.72rem !important;
+  font-weight: 500 !important;
+  color: rgba(255,255,255,0.5) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  margin-bottom: 4px;
+}
+
+.itemDetailPage .itemDetailPageInfoRow .itemDetailPageInfoValue,
+.itemDetailPage .detailPageInfoValue {
+  font-size: 0.88rem !important;
+  font-weight: 500 !important;
+  color: rgba(255,255,255,0.9) !important;
+}
+
+/* ── Ratings / Score pill ── */
+.itemDetailPage .communityRating,
+.itemDetailPage .starRating {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  background: rgba(255,255,255,0.12) !important;
+  border-radius: 20px !important;
+  padding: 4px 10px !important;
+  font-size: 0.8rem !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+}
+
+/* ── Hide ugly default sidebar/poster on detail pages ── */
+.itemDetailPage .detailImageContainer img.itemDetailImage {
+  border-radius: 16px !important;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.6) !important;
+}
+
+/* ── Responsive: mobile/tablet ── */
+@media (max-width: 768px) {
+  .itemDetailPage .detailButtons,
+  .itemDetailPage .detailPagePrimaryActionButtons {
+    flex-wrap: wrap;
+  }
+  .itemName, h1.itemName {
+    font-size: 2rem !important;
+  }
+  .itemDetailPage .overview {
+    font-size: 0.85rem !important;
+  }
+}
