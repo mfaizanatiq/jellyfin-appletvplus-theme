@@ -1,0 +1,68 @@
+/* =================================================================
+   _hero.css — Cinematic backdrop hero banner (Apple TV+ style)
+   jellyfin-appletvplus-theme
+   ================================================================= */
+
+.backgroundImage {
+  object-fit: cover !important;
+  object-position: center top !important;
+  width: 100% !important;
+  height: 100% !important;
+  filter: brightness(0.4) saturate(1.1) !important;
+}
+
+.backgroundContainer::after {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0,0,0,0.2) 30%,
+    rgba(0,0,0,0.7) 60%,
+    rgba(0,0,0,0.95) 80%,
+    #000000 100%
+  ) !important;
+  pointer-events: none !important;
+}
+
+.backgroundContainer::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.6) 0%,
+    transparent 50%
+  ) !important;
+  pointer-events: none !important;
+}
+
+.backdropImage {
+  border-radius: 0 !important;
+  filter: brightness(0.7) !important;
+}
+
+.detailPageContent .backdropContainer .backdropImage {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  filter: brightness(0.35) saturate(1.0) !important;
+}
+
+.detailPageContent .backdropContainer::after {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.1) 0%,
+    rgba(0,0,0,0.5) 40%,
+    rgba(0,0,0,0.85) 70%,
+    #000000 90%
+  ) !important;
+  pointer-events: none !important;
+}
+
+.homePage .page { background: transparent !important; }
+.homeSectionsContainer { position: relative !important; z-index: 1 !important; padding-top: 8px !important; }
