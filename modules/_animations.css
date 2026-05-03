@@ -1,0 +1,127 @@
+/* =================================================================
+   _animations.css — Smooth transitions, fade-ins, micro-interactions
+   Apple TV+ fluid motion feel
+   jellyfin-appletvplus-theme
+   ================================================================= */
+
+/* --- KEYFRAME DEFINITIONS --- */
+
+@keyframes atv-fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes atv-fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes atv-scaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes atv-shimmer {
+  0%   { background-position: -800px 0; }
+  100% { background-position: 800px 0; }
+}
+
+/* --- PAGE LOAD FADE IN --- */
+.page {
+  animation: atv-fadeIn 0.3s ease forwards !important;
+}
+
+/* --- SECTION / ROW STAGGER --- */
+.verticalSection:nth-child(1) { animation-delay: 0.05s !important; }
+.verticalSection:nth-child(2) { animation-delay: 0.1s !important; }
+.verticalSection:nth-child(3) { animation-delay: 0.15s !important; }
+.verticalSection:nth-child(4) { animation-delay: 0.2s !important; }
+.verticalSection:nth-child(5) { animation-delay: 0.25s !important; }
+
+.verticalSection {
+  animation: atv-fadeInUp 0.4s ease forwards !important;
+  opacity: 0 !important;
+  animation-fill-mode: forwards !important;
+}
+
+/* --- CARD LOADING SHIMMER --- */
+/* Applied to cards while images load */
+.cardImageContainer:empty,
+.cardImage[src=""] {
+  background: linear-gradient(
+    to right,
+    var(--atv-surface) 0%,
+    var(--atv-surface-2) 40%,
+    var(--atv-surface) 80%
+  ) !important;
+  background-size: 800px 100% !important;
+  animation: atv-shimmer 1.5s infinite linear !important;
+}
+
+/* --- DIALOG / MODAL ANIMATION --- */
+.dialogContainer .dialog,
+.paper-dialog {
+  animation: atv-scaleIn 0.2s cubic-bezier(0.34,1.56,0.64,1) forwards !important;
+}
+
+/* --- BACKDROP CROSSFADE --- */
+.backdropImage {
+  transition: opacity 0.6s ease !important;
+}
+
+/* --- NAV ITEM HOVER --- */
+.headerTab,
+.emby-tab-button,
+.navMenuOption {
+  transition: background 0.15s ease, color 0.15s ease !important;
+}
+
+/* --- BUTTON PRESS FEEL --- */
+.emby-button:active,
+.btnPlay:active {
+  transform: scale(0.97) !important;
+  transition: transform 0.08s ease !important;
+}
+
+/* --- IMAGE LOAD FADE --- */
+.cardImage,
+.itemDetailImage,
+.personImage {
+  transition: opacity 0.3s ease !important;
+}
+
+.cardImage[loading],
+.cardImage:not([src]) {
+  opacity: 0 !important;
+}
+
+/* --- SCROLL ROW SMOOTH SCROLL --- */
+.itemsContainer {
+  scroll-behavior: smooth !important;
+}
+
+/* --- DETAIL PAGE ENTER --- */
+.detailPageContent {
+  animation: atv-fadeInUp 0.35s ease forwards !important;
+}
+
+/* --- PROGRESS BAR FILL ANIMATION --- */
+.itemProgressBarForeground {
+  transition: width 0.4s ease !important;
+}
+
+/* --- CONTEXT MENU / POPUP --- */
+.actionSheetContent,
+.paperActionSheet {
+  animation: atv-fadeInUp 0.2s ease forwards !important;
+  border-radius: var(--atv-radius-lg) !important;
+}
+
+/* --- REDUCE MOTION SUPPORT --- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
