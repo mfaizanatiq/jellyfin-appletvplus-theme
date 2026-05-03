@@ -1,0 +1,201 @@
+/* =================================================================
+   _cards.css — Media cards, poster art, horizontal rows
+   jellyfin-appletvplus-theme
+   ================================================================= */
+
+/* --- CARD BASE --- */
+.card,
+.itemAction {
+  border-radius: var(--atv-radius-md) !important;
+  overflow: hidden !important;
+  transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1),
+              box-shadow 0.25s ease !important;
+}
+
+.cardBox,
+.cardContent {
+  border-radius: var(--atv-radius-md) !important;
+  overflow: hidden !important;
+  background: var(--atv-surface) !important;
+}
+
+.cardImageContainer {
+  border-radius: var(--atv-radius-md) !important;
+  overflow: hidden !important;
+  background: var(--atv-surface) !important;
+}
+
+/* Card hover: scale up with shadow (Apple TV+ bounce feel) */
+.card:hover {
+  transform: scale(1.05) !important;
+  z-index: 10 !important;
+}
+
+.card:hover .cardBox,
+.card:hover .cardImageContainer {
+  box-shadow: 0 12px 32px rgba(0,0,0,0.7) !important;
+}
+
+/* --- CARD TEXT --- */
+.cardText,
+.cardTextRow,
+.cardTextContainer {
+  background: transparent !important;
+  padding: 6px 4px 2px !important;
+}
+
+.cardText {
+  font-family: var(--atv-font) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: var(--atv-white) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.cardText.cardText-secondary {
+  font-size: 11px !important;
+  color: var(--atv-white-60) !important;
+  font-weight: 400 !important;
+}
+
+/* --- CARD OVERLAY GRADIENT --- */
+.cardOverlayContainer {
+  border-radius: var(--atv-radius-md) !important;
+}
+
+.cardOverlay {
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.8) 0%,
+    rgba(0,0,0,0.3) 40%,
+    transparent 70%
+  ) !important;
+  opacity: 0 !important;
+  transition: opacity 0.2s ease !important;
+}
+
+.card:hover .cardOverlay {
+  opacity: 1 !important;
+}
+
+/* --- PLAY BUTTON OVERLAY --- */
+.cardOverlayButton-hover {
+  background: rgba(255,255,255,0.15) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(255,255,255,0.3) !important;
+  border-radius: 50% !important;
+  width: 48px !important;
+  height: 48px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.15s ease !important;
+}
+
+.cardOverlayButton-hover:hover {
+  background: rgba(255,255,255,0.25) !important;
+  transform: scale(1.1) !important;
+}
+
+/* --- MY MEDIA LIBRARY TILES --- */
+/* Transform the big fat colored tiles into sleek cards */
+.section0 .card .cardBox,
+.libraryCard .cardBox {
+  border-radius: var(--atv-radius-md) !important;
+}
+
+/* Make library category tiles more compact */
+.section0 .card {
+  max-width: 200px !important;
+}
+
+/* --- HORIZONTAL SCROLL ROWS --- */
+.itemsContainer.vertical-wrap {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  gap: 12px !important;
+  padding: 4px 4px 12px !important;
+  scroll-snap-type: x mandatory !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+.itemsContainer.vertical-wrap .card {
+  scroll-snap-align: start !important;
+  flex-shrink: 0 !important;
+}
+
+/* --- SECTION / ROW LAYOUT --- */
+.verticalSection {
+  margin: 0 0 32px 0 !important;
+  padding: 0 !important;
+}
+
+.verticalSection-extrabottompadding {
+  margin-bottom: 48px !important;
+}
+
+/* Section header row */
+.sectionTitleContainer {
+  display: flex !important;
+  align-items: baseline !important;
+  justify-content: space-between !important;
+  padding: 0 0 8px 0 !important;
+  margin: 0 !important;
+}
+
+/* --- BACKDROP CARDS (16:9 aspect ratio) --- */
+.backdropCard .cardImage {
+  aspect-ratio: 16/9 !important;
+}
+
+/* --- PORTRAIT CARDS --- */
+.portraitCard .cardImage {
+  aspect-ratio: 2/3 !important;
+}
+
+/* --- SQUARE CARDS (music) --- */
+.squareCard .cardImage {
+  aspect-ratio: 1/1 !important;
+}
+
+/* --- UNPLAYED INDICATOR BADGE --- */
+.countIndicator {
+  background: var(--atv-blue) !important;
+  color: white !important;
+  border-radius: 50px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  min-width: 20px !important;
+  height: 20px !important;
+  line-height: 20px !important;
+  padding: 0 6px !important;
+}
+
+/* --- PROGRESS BAR ON CARDS --- */
+.itemProgressBar {
+  height: 3px !important;
+  background: rgba(255,255,255,0.2) !important;
+  border-radius: 0 0 var(--atv-radius-md) var(--atv-radius-md) !important;
+  margin: 0 !important;
+}
+
+.itemProgressBarForeground {
+  background: var(--atv-blue) !important;
+  height: 100% !important;
+  border-radius: 0 0 0 var(--atv-radius-md) !important;
+}
+
+/* --- WATCHED CHECKMARK --- */
+.playedIndicator {
+  background: var(--atv-blue) !important;
+  color: white !important;
+  border-radius: 50% !important;
+  width: 20px !important;
+  height: 20px !important;
+}
