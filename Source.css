@@ -1,0 +1,16 @@
+/* =================================================================
+   jellyfin-appletvplus-theme — Source.css
+   Apple TV+ style theme for Jellyfin
+   Author: mfaizanatiq
+   License: MIT
+   Install: Paste this single line into Jellyfin Admin > Branding > Custom CSS:
+   @import url('https://cdn.jsdelivr.net/gh/mfaizanatiq/jellyfin-appletvplus-theme@latest/Source.css');
+   ================================================================= */
+
+/* --- MODULE IMPORTS (comment out any module to disable it) --- */
+@import url('./modules/_base.css');
+@import url('./modules/_nav.css');
+@import url('./modules/_cards.css');
+@import url('./modules/_hero.css');
+@import url('./modules/_detail.css');
+@import url('./modules/_animations.css');
