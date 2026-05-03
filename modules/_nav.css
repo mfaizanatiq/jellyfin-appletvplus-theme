@@ -1,0 +1,133 @@
+/* =================================================================
+   _nav.css — Navigation bar: slim, transparent, Apple TV+ style
+   jellyfin-appletvplus-theme
+   ================================================================= */
+
+/* --- HEADER / NAV BAR --- */
+.skinHeader,
+.skinHeader-withBackground,
+.headerTop {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 100 !important;
+  height: 52px !important;
+  padding: 0 24px !important;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.85) 0%,
+    rgba(0,0,0,0) 100%
+  ) !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  border-bottom: none !important;
+  display: flex !important;
+  align-items: center !important;
+  transition: background 0.3s ease !important;
+}
+
+/* Solid bg when user scrolls down */
+.skinHeader.headroom--not-top {
+  background: rgba(0,0,0,0.92) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+}
+
+/* --- LOGO --- */
+.headerLogo,
+.headerLogoImage,
+.headerLogoFade {
+  height: 24px !important;
+  width: auto !important;
+  opacity: 0.9 !important;
+}
+
+/* --- NAV TABS (Home, Favorites) --- */
+.headerTabs,
+.sectionTabs {
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  margin: 0 0 0 32px !important;
+}
+
+.headerTab,
+.emby-tab-button,
+.pageTabButton {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.01em !important;
+  color: rgba(255,255,255,0.75) !important;
+  padding: 6px 16px !important;
+  border-radius: 50px !important;
+  border: none !important;
+  background: transparent !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  text-transform: none !important;
+  white-space: nowrap !important;
+}
+
+.headerTab:hover,
+.emby-tab-button:hover,
+.pageTabButton:hover {
+  color: #ffffff !important;
+  background: rgba(255,255,255,0.1) !important;
+}
+
+.headerTab.is-active,
+.emby-tab-button.is-active,
+.pageTabButton.is-active,
+.headerTab[aria-selected="true"],
+.emby-tab-button[aria-selected="true"] {
+  color: #ffffff !important;
+  background: rgba(255,255,255,0.15) !important;
+  font-weight: 600 !important;
+}
+
+/* Remove the tab indicator underline bar */
+.emby-tabs-slider,
+.emby-tabs-indicator {
+  display: none !important;
+}
+
+/* --- HEADER BUTTONS (search, cast, user) --- */
+.headerButton,
+.headerSearchButton,
+.headerCastButton,
+.headerUserButton {
+  color: rgba(255,255,255,0.8) !important;
+  padding: 6px !important;
+  border-radius: 50% !important;
+  transition: all 0.15s ease !important;
+}
+
+.headerButton:hover,
+.headerSearchButton:hover,
+.headerCastButton:hover,
+.headerUserButton:hover {
+  color: #ffffff !important;
+  background: rgba(255,255,255,0.12) !important;
+}
+
+/* --- PUSH MAIN CONTENT BELOW FIXED NAV --- */
+.skinBody > .mainAnimatedPages,
+.homeSectionsContainer {
+  padding-top: 60px !important;
+}
+
+/* --- LIBRARY SECTION TABS (Movies, TV Shows, etc.) --- */
+.libraryPage .tabs-upperleft,
+.libraryPage .sectionTabs {
+  display: flex !important;
+  gap: 6px !important;
+  padding: 12px 24px !important;
+  background: transparent !important;
+}
+
+/* --- HAMBURGER MENU ICON --- */
+.headerMenuButton .md-icon,
+.headerMenuButton {
+  color: rgba(255,255,255,0.8) !important;
+}
