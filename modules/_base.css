@@ -1,0 +1,218 @@
+/* =================================================================
+   _base.css — Global reset, typography, color variables
+   jellyfin-appletvplus-theme
+   ================================================================= */
+
+/* --- DESIGN TOKENS --- */
+:root {
+  --atv-black:        #000000;
+  --atv-surface:      #1c1c1e;
+  --atv-surface-2:    #2c2c2e;
+  --atv-surface-3:    #3a3a3c;
+  --atv-white:        #ffffff;
+  --atv-white-60:     rgba(255,255,255,0.6);
+  --atv-white-40:     rgba(255,255,255,0.4);
+  --atv-white-15:     rgba(255,255,255,0.15);
+  --atv-white-08:     rgba(255,255,255,0.08);
+  --atv-blue:         #0071e3;
+  --atv-blue-hover:   #0077ed;
+  --atv-red:          #ff453a;
+  --atv-green:        #32d74b;
+  --atv-border:       rgba(255,255,255,0.12);
+  --atv-radius-sm:    6px;
+  --atv-radius-md:    10px;
+  --atv-radius-lg:    14px;
+  --atv-radius-pill:  50px;
+  --atv-shadow-card:  0 4px 20px rgba(0,0,0,0.5);
+  --atv-shadow-hero:  0 8px 40px rgba(0,0,0,0.8);
+  --atv-font:         -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                      "Helvetica Neue", Arial, sans-serif;
+}
+
+/* --- GLOBAL RESET --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: var(--atv-black) !important;
+  color: var(--atv-white) !important;
+  font-family: var(--atv-font) !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+}
+
+/* All major layout containers */
+.backgroundContainer,
+.backgroundContainer-transparent,
+.skinBody,
+.mainAnimatedPages,
+.page,
+.page.type-interior,
+.contentScrollSlider {
+  background: var(--atv-black) !important;
+  color: var(--atv-white) !important;
+}
+
+/* Remove any lingering light backgrounds */
+.homeSectionsContainer,
+.verticalSection,
+.section0 {
+  background: transparent !important;
+}
+
+/* --- TYPOGRAPHY SCALE --- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--atv-font) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.025em !important;
+  color: var(--atv-white) !important;
+}
+
+p, span, label, .emby-label {
+  font-family: var(--atv-font) !important;
+}
+
+/* Section titles */
+.sectionTitle,
+.sectionTitleContainer .sectionTitle {
+  font-size: clamp(16px, 2vw, 22px) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--atv-white) !important;
+  margin: 0 0 10px 0 !important;
+  padding: 0 !important;
+}
+
+.sectionTitleTextButton {
+  font-size: 13px !important;
+  color: var(--atv-blue) !important;
+  font-weight: 500 !important;
+}
+
+/* --- LINKS --- */
+a, .button-link {
+  color: var(--atv-blue) !important;
+  text-decoration: none !important;
+}
+a:hover { opacity: 0.85 !important; }
+
+/* --- SCROLLBARS --- */
+* {
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(255,255,255,0.2) transparent !important;
+}
+::-webkit-scrollbar { width: 4px !important; height: 4px !important; }
+::-webkit-scrollbar-track { background: transparent !important; }
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.2) !important;
+  border-radius: 4px !important;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.35) !important;
+}
+
+/* --- BUTTONS --- */
+.emby-button,
+.raised.emby-button,
+.emby-button-raised {
+  font-family: var(--atv-font) !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  border-radius: var(--atv-radius-pill) !important;
+  letter-spacing: -0.01em !important;
+  transition: all 0.2s ease !important;
+}
+
+.raised.emby-button,
+.emby-button-raised {
+  background: var(--atv-blue) !important;
+  color: var(--atv-white) !important;
+  border: none !important;
+}
+
+.raised.emby-button:hover,
+.emby-button-raised:hover {
+  background: var(--atv-blue-hover) !important;
+  transform: scale(1.02) !important;
+}
+
+/* Play button */
+.btnPlay, [data-action="resume"] {
+  background: var(--atv-white) !important;
+  color: var(--atv-black) !important;
+  border-radius: var(--atv-radius-pill) !important;
+  font-weight: 600 !important;
+  padding: 10px 28px !important;
+}
+
+/* --- DIALOGS / MODALS --- */
+.dialogContainer .dialog,
+.paper-dialog,
+.focuscontainer-dialog {
+  background: var(--atv-surface) !important;
+  border-radius: var(--atv-radius-lg) !important;
+  color: var(--atv-white) !important;
+  border: 1px solid var(--atv-border) !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8) !important;
+}
+
+/* --- INPUTS --- */
+.emby-input,
+.emby-textarea,
+.emby-select {
+  background: var(--atv-white-08) !important;
+  border: 1px solid var(--atv-border) !important;
+  border-radius: var(--atv-radius-md) !important;
+  color: var(--atv-white) !important;
+  font-family: var(--atv-font) !important;
+}
+
+/* --- DRAWERS --- */
+.mainDrawer {
+  background: rgba(28,28,30,0.97) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border-right: 1px solid var(--atv-border) !important;
+}
+
+.navMenuOption .navMenuOptionText,
+.navMenuOption,
+.mainDrawer-scrollContainer a {
+  color: var(--atv-white-60) !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+}
+
+.navMenuOption:hover .navMenuOptionText,
+.navMenuOption.navMenuOption-selected .navMenuOptionText {
+  color: var(--atv-white) !important;
+}
+
+/* --- PROGRESS BARS --- */
+.itemProgressBar,
+.cardProgressBar {
+  background: rgba(255,255,255,0.2) !important;
+  border-radius: 2px !important;
+  height: 3px !important;
+}
+
+.itemProgressBarForeground,
+.cardProgressBarForeground {
+  background: var(--atv-blue) !important;
+  border-radius: 2px !important;
+}
+
+/* --- PLAYED INDICATOR --- */
+.playedIndicator {
+  background: var(--atv-blue) !important;
+  border-radius: 50% !important;
+}
+
+/* --- NOW PLAYING BAR --- */
+.nowPlayingBar {
+  background: rgba(28,28,30,0.95) !important;
+  backdrop-filter: blur(20px) !important;
+  border-top: 1px solid var(--atv-border) !important;
+}
